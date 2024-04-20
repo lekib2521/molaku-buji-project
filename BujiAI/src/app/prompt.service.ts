@@ -5,6 +5,11 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class PromptService {
-
   constructor(private http: HttpClient) { }
+
+  getAny() {
+    this.http.get('http://localhost:3000/').subscribe(data =>{
+      console.log(data);
+    })
+  }
 }

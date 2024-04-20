@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { PromptService } from '../prompt.service';
 
 @Component({
   selector: 'app-quiz',
@@ -9,4 +10,16 @@ import { Component } from '@angular/core';
 })
 export class QuizComponent {
 
+  constructor(private promptService: PromptService) { }
+
+  callb: any;
+
+  callbackend() {
+    this.callb = this.promptService.getAny();
+  }
+
+  ngOnInit() {
+    // this.callbackend();
+  }
 }
+

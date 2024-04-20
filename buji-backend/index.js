@@ -3,7 +3,8 @@ const app = express();
 const port = 3000;
 
 app.get('/', (req, res) => {
-  res.send('Hello World!');
+  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
+  res.send({response:'Hello World!'});
 });
 
 app.listen(port, () => {
