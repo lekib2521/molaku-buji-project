@@ -1,6 +1,12 @@
-<div >Enter your quiz topic</div>
-<input [(ngModel)]="topic"/>
-<div (click)="callbackend()">Submit</div>
+<div class="topic-input">
+    <div>Enter your quiz topic</div>
+    <div class="input-wrapper">
+        <input [(ngModel)]="topic" />
+        <div class='clear button' (click)="topic=''">X</div>
+        <div class='submit button' (click)="callbackend()">Submit</div>
+    </div>
+</div>
+
 
 <div *ngIf = questionReady>
     <div class = "question">{{callb.question}}</div>

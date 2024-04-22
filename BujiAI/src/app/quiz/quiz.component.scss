@@ -1,0 +1,33 @@
+input {
+    height: 30px;
+    width: 250px;
+    border-radius: 5px;
+}
+
+.input-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.button {
+    height: 30px !important;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    margin: 10px;
+}
+
+.submit {
+    background-color: #53d769;
+    width: fit-content;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+}
+
+.clear {
+    background-color: #fc3d39;
+    width: 30px;
+    display: flex;
+    justify-content: center;
+}
