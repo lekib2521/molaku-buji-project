@@ -1,14 +1,15 @@
 import { Component, input, computed } from '@angular/core';
 import { PromptService } from '../prompt.service';
-import {FormsModule} from '@angular/forms';
-import { CommonModule } from '@angular/common';  
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';  
 
 @Component({
   selector: 'app-quiz',
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, RouterLink],
   templateUrl: './quiz.component.html',
-  styleUrl: './quiz.component.scss'
+  styleUrls: ['./quiz.component.scss', '../../assets/main.scss']
 })
 export class QuizComponent {
 
@@ -17,6 +18,7 @@ export class QuizComponent {
   callb: any;
   topic: any;
   questionReady: boolean = false;
+  answerCorrect: any = null;
 
   callbackend() {
     console.log(this.topic);
@@ -25,6 +27,17 @@ export class QuizComponent {
       console.log(this.callb);
       this.questionReady = true;
     });
+  }
+
+  optionSelect(option: any) {
+    this.callb[option].checked = !this.callb[option].checked;
+    if (this.callb[option].checked && this.callb.correctAnswer == option) {
+      this.answerCorrect = true;
+    } else {
+      this.answerCorrect = false;
+    }
+
+    if(!this.callb[option].checked) this.answerCorrect = null
   }
 
   ngOnInit() {

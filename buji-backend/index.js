@@ -55,7 +55,7 @@ app.get('/', (req, res) => {
   const request = {
     contents: [
       {role: 'user', parts: [{text: `Generate a multiple choice question on the topic of ${req.query.topic} in the following format, I should be able to parse the question and options as JSON from the response.:
-      {question: Question text, a: Option 1, b: Option 2, c: Option 3, d: Option 4, correctAnswer: A}`}]}
+      {question: Question text, a: {text: "Option 1"}, b: {text: "Option 2"}, c: {text: Option 3}, d: {text: Option 4}, correctAnswer: a}`}]}
     ],
   };
    generateContent(request,res)    

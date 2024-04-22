@@ -1,3 +1,4 @@
+<a class="back" routerLink='/home'>Back</a>
 <div class="topic-input">
     <div>Enter your quiz topic</div>
     <div class="input-wrapper">
@@ -10,10 +11,11 @@
 
 <div *ngIf = questionReady>
     <div class = "question">{{callb.question}}</div>
-    <div class = "option">a. {{callb.a}}</div>
-    <div class = "option">b. {{callb.b}}</div>
-    <div class = "option">c. {{callb.c}}</div>
-    <div class = "option">d. {{callb.d}}</div>
-    <div class = "correct-answer">The Correct Answer is: {{callb.correctAnswer}}) {{callb[callb.correctAnswer]}}</div>
+    <div class = "option" (click)="optionSelect('a')"><input type="checkbox" value="callb.a?.checked"/>a. {{callb.a.text}}</div>
+    <div class = "option" (click)="optionSelect('b')"><input type="checkbox" value="callb.b?.checked"/>b. {{callb.b.text}}</div>
+    <div class = "option" (click)="optionSelect('c')"><input type="checkbox" value="callb.c?.checked"/>c. {{callb.c.text}}</div>
+    <div class = "option" (click)="optionSelect('d')"><input type="checkbox" value="callb.d?.checked"/>d. {{callb.d.text}}</div>
+    <div class = "correct-answer" *ngIf="answerCorrect">You have chosen the correct option</div>
+    <div class = "wrong-answer" *ngIf="answerCorrect===false">You have chosen the wrong option. Try again.</div>
 </div>
 
