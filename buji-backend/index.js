@@ -39,29 +39,26 @@ async function generateContent(request,res) {
 
 
   const streamingResp = await generativeModel.generateContentStream(request);
-  let response = ''
+  let response = "";
 
   for await (const item of streamingResp.stream) {
-    // console.log('stream chunk: ' + JSON.stringify(item) + '\n');
-    console.log(item)
-    response+= JSON.stringify(item);
+    response+=(item.candidates[0]?.content?.parts[0]?.text);
   }
-
-  process.stdout.write('aggregated response: ' + JSON.stringify(await streamingResp.response));
+  response = JSON.parse(response.substr(response.indexOf("{"),response.lastIndexOf("}")-response.indexOf("{")+1));
   res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
-  res.send({response:'Hello World!',response});
+  res.send({response});
 }
 
 app.get('/', (req, res) => {
   //here
+  console.log(req.query);
   const request = {
     contents: [
-      {role: 'user', parts: [{text: `hi. quiz me on the topic of banana`}]}
+      {role: 'user', parts: [{text: `Generate a multiple choice question on the topic of ${req.query.topic} in the following format, I should be able to parse the question and options as JSON from the response.:
+      {Question: Question text, A: Option 1, B: Option 2, C: Option 3, D: Option 4, Correct Answer: A}`}]}
     ],
   };
-
-  generateContent(request,res)
-    
+   generateContent(request,res)    
   });
   
 

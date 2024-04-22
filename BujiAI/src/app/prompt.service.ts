@@ -1,14 +1,19 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PromptService {
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+  ) { }
 
-  getAny() {
-    this.http.get('http://localhost:3000/').subscribe(data =>{
+  getAny(topic:any) {
+    console.log(topic);
+    const options = { params: new HttpParams().set('topic', topic) };
+    
+    this.http.get<any>(`http://localhost:3000/`,options).subscribe(data =>{
       console.log(data);
     })
   }
