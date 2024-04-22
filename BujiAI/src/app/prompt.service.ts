@@ -12,9 +12,6 @@ export class PromptService {
   getAny(topic:any) {
     console.log(topic);
     const options = { params: new HttpParams().set('topic', topic) };
-    
-    this.http.get<any>(`http://localhost:3000/`,options).subscribe(data =>{
-      console.log(data);
-    })
+    return this.http.get<any>(`http://localhost:3000/`,options);
   }
 }

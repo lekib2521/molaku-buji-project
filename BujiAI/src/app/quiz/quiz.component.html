@@ -2,3 +2,12 @@
 <input [(ngModel)]="topic"/>
 <div (click)="callbackend()">Submit</div>
 
+<div *ngIf = questionReady>
+    <div class = "question">{{callb.question}}</div>
+    <div class = "option">a. {{callb.a}}</div>
+    <div class = "option">b. {{callb.b}}</div>
+    <div class = "option">c. {{callb.c}}</div>
+    <div class = "option">d. {{callb.d}}</div>
+    <div class = "correct-answer">The Correct Answer is: {{callb.correctAnswer}}) {{callb[callb.correctAnswer]}}</div>
+</div>
+
