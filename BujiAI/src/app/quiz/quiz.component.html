@@ -1,21 +1,28 @@
 <a class="back" routerLink='/home'>Back</a>
 <div class="topic-input">
-    <div>Enter your quiz topic</div>
     <div class="input-wrapper">
-        <input [(ngModel)]="topic" />
-        <div class='clear button' (click)="topic=''">X</div>
+        <div>What do you want to be quizzed on?</div>
+        <input [(ngModel)]="topic.text" />
+        <div>Number of questions</div>
+        <input [(ngModel)]="topic.qno"/>
+        <div class='clear button' (click)="topic.text=''">X</div>
         <div class='submit button' (click)="generateQuiz()">Submit</div>
     </div>
 </div>
 
-
-<div *ngIf = questionReady>
-    <div class = "question">{{callb.question}}</div>
-    <div class = "option" (click)="optionSelect('a')"><input type="checkbox" [(ngModel)]="callb.a.checked"/>a. {{callb.a.text}}</div>
-    <div class = "option" (click)="optionSelect('b')"><input type="checkbox" [(ngModel)]="callb.b.checked"/>b. {{callb.b.text}}</div>
-    <div class = "option" (click)="optionSelect('c')"><input type="checkbox" [(ngModel)]="callb.c.checked"/>c. {{callb.c.text}}</div>
-    <div class = "option" (click)="optionSelect('d')"><input type="checkbox" [(ngModel)]="callb.d.checked"/>d. {{callb.d.text}}</div>
-    <div class = "correct-answer" *ngIf="answerCorrect">You have chosen the correct option</div>
-    <div class = "wrong-answer" *ngIf="answerCorrect===false">You have chosen the wrong option. Try again.</div>
+<div *ngIf="questionReady" class="quiz-container">
+    <div *ngIf="!quizStarted" (click)="progressQuiz(1)">Start Quiz</div>
+    <div *ngIf="quizStarted&&focusQno>-1">
+        <div class="question">{{quizData[focusQno].question}}</div>
+        <div class="option" (click)="optionSelect('a')"><input type="checkbox" [(ngModel)]="quizData[focusQno].a.checked"/>a. {{quizData[focusQno].a.text}}</div>
+        <div class="option" (click)="optionSelect('b')"><input type="checkbox" [(ngModel)]="quizData[focusQno].b.checked"/>b. {{quizData[focusQno].b.text}}</div>
+        <div class="option" (click)="optionSelect('c')"><input type="checkbox" [(ngModel)]="quizData[focusQno].c.checked"/>c. {{quizData[focusQno].c.text}}</div>
+        <div class="option" (click)="optionSelect('d')"><input type="checkbox" [(ngModel)]="quizData[focusQno].d.checked"/>d. {{quizData[focusQno].d.text}}</div>
+        <div class="correct-answer" *ngIf="answerCorrect">You have chosen the correct option</div>
+        <div class="wrong-answer" *ngIf="answerCorrect===false">You have chosen the wrong option. Try again.</div>
+        <div class="next" *ngIf="focusQno<topic.qno&&focusQno>-1" (click)="progressQuiz(focusQno+1)">Next</div>
+        <div class="next" *ngIf="focusQno==topic.qno" (click)="progressQuiz(-1)">Finish Quiz and View Score</div>
+    </div>
+    <div class="score" *ngIf="focusQno==-1">Your score is {{this.quizData.rightAnswer}}/{{topic.qno}}</div>
 </div>
 

@@ -15,32 +15,43 @@ export class QuizComponent {
 
   constructor(private promptService: PromptService) { }
 
-  callb: any;
-  topic: any;
+  quizData: any;
+  topic: any= {text:'Science',qno:1};
   questionReady: boolean = false;
   answerCorrect: any = null;
+  quizStarted: boolean = false;
+  focusQno: any=0;
 
   generateQuiz() {
     console.log(this.topic);
     this.promptService.getQuiz(this.topic).subscribe(data => {
-      this.callb = data.response;
+      this.quizData = data.response;
+      this.quizData.rightAnswer = 0;
       this.questionReady = true;
     });
   }
 
+  progressQuiz(qno:number){
+    this.focusQno = qno;
+    if(qno==-1){
+      return;
+    } else if (qno==1){
+      this.quizStarted = true;
+    }
+  }
+
   optionSelect(option: any) {
-    this.callb[option].checked = !this.callb[option].checked;
-    if (this.callb[option].checked && this.callb.correctAnswer == option) {
-      this.answerCorrect = true;
+    this.quizData[this.focusQno][option].checked = !this.quizData[this.focusQno][option].checked;
+    if (this.quizData[this.focusQno][option].checked && this.quizData[this.focusQno].correctAnswer == option) {
+      this.answerCorrect = true; this.quizData.rightAnswer+=1;
     } else {
       this.answerCorrect = false;
     }
 
-    if(!this.callb[option].checked) this.answerCorrect = null
+    if(!this.quizData[this.focusQno][option].checked) this.answerCorrect = null
   }
 
   ngOnInit() {
-    // this.callbackend();
   }
 }
 
