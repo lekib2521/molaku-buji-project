@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';  
 import { FormsModule } from '@angular/forms';
+import { PromptService } from '../prompt.service';
 
 @Component({
   selector: 'app-essay',
@@ -10,6 +11,8 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './essay.component.scss'
 })
 export class EssayComponent {
+
+  constructor(private promptService: PromptService) { }
   essayParams:any = {
     topic: 'Science',
     purpose: 'To inform',
@@ -22,6 +25,8 @@ export class EssayComponent {
   essayOutput: any = {};
 
   generateEssay() {
-
+    this.promptService.getEssay(this.essayParams).subscribe(data => {
+      this.essayOutput = data.response;
+    });
   }
 }

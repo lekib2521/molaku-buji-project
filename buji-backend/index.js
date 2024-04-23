@@ -35,13 +35,14 @@ const generativeModel = vertex_ai.preview.getGenerativeModel({
   ],
 });
 
-async function generateQuiz(request, res) {
+async function generateContent(request, res) {
   const streamingResp = await generativeModel.generateContentStream(request);
   let response = "";
 
   for await (const item of streamingResp.stream) {
     response += (item.candidates[0]?.content?.parts[0]?.text);
   }
+  console.log(response.substr(response.indexOf("{"), response.lastIndexOf("}") - response.indexOf("{") + 1));
   response = JSON.parse(response.substr(response.indexOf("{"), response.lastIndexOf("}") - response.indexOf("{") + 1));
   res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
   res.send({ response });
@@ -59,7 +60,22 @@ app.get('/quiz', (req, res) => {
         }],
       }],
   };
-  generateQuiz(request, res)
+  generateContent(request, res)
+});
+
+app.get('/essay', (req, res) => {
+  //here
+  console.log(req.query);
+  const request = {
+    contents: [{
+        role: 'user', 
+        parts: [{
+          text: `Generate an essay on the topic of ${req.query.topic} as if it was written by ${req.query.author} intended to be read by ${req.query.reader}. The purpose of the essay is ${req.query.purpose}. The tone of the essay should be ${req.query.tone} and the essay should be ${req.query.wordcount} words long. Refer to ${req.query.sample} for the writing style.
+          I should be able to parse the output as a JSON in the following format:{body: "Essay text",title: "Essay title"}`
+        }],
+      }],
+  };
+  generateContent(request, res)
 });
 
 

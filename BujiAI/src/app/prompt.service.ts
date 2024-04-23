@@ -15,7 +15,15 @@ export class PromptService {
   }
 
   getEssay(topic:any) {
-    const options = { params: new HttpParams().set('topic', topic) };
+    const options = { params: new HttpParams()
+      .set('topic', topic.topic) 
+      .set('purpose', topic.purpose)
+      .set('author', topic.author)
+      .set('reader', topic.reader)
+      .set('wordcount', topic.wordcount)
+      .set('tone', topic.tone)
+      .set('sample', topic.sample)
+    };
     return this.http.get<any>(`http://localhost:3000/essay`,options);
   }
 }
