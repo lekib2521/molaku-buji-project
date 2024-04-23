@@ -20,11 +20,10 @@ export class QuizComponent {
   questionReady: boolean = false;
   answerCorrect: any = null;
 
-  callbackend() {
+  generateQuiz() {
     console.log(this.topic);
-    this.promptService.getAny(this.topic).subscribe(data => {
+    this.promptService.getQuiz(this.topic).subscribe(data => {
       this.callb = data.response;
-      console.log(this.callb);
       this.questionReady = true;
     });
   }
