@@ -1,0 +1,26 @@
+<a class="back" routerLink='/home'>Back</a>
+<div class="essay-input-wrapper">
+    <div>What is your essay about?</div>
+    <input class="topic" [(ngModel)]="essayParams.topic"/>
+    <div>Why are you writing the essay?</div>
+    <input class="purpose"  [(ngModel)]="essayParams.purpose"/>
+    <div>Whose perspective are you writing the essay from?</div>
+    <input class="author" [(ngModel)]="essayParams.author"/>
+    <div>Who will read this essay?</div>
+    <input class="reader" [(ngModel)]="essayParams.reader"/>
+    <div>Word Limit</div>
+    <input class="word-count" [(ngModel)]="essayParams.wordcount"/>
+    <div>Tone</div>
+    <input class="tone" [(ngModel)]="essayParams.tone"/>
+    <div>Sample of your writing</div>
+    <input class="sample" [(ngModel)]="essayParams.sample"/>
+    <div class='submit button' (click)="generateEssay()">Submit</div>
+</div>
+<div class="essay-output-wrapper">
+    <div class="essay title">{{essayOutput?.title}}</div>
+    <div class="essay body">{{essayOutput?.body}}</div>
+</div>
+<div class="export-wrapper">
+    <div class="pdf"></div>
+    <div class="doc"></div>
+</div>

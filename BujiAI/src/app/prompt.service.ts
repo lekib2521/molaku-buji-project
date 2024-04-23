@@ -9,8 +9,13 @@ export class PromptService {
     private http: HttpClient,
   ) { }
 
-  getAny(topic:any) {
+  getQuiz(topic:any) {
     const options = { params: new HttpParams().set('topic', topic) };
-    return this.http.get<any>(`http://localhost:3000/`,options);
+    return this.http.get<any>(`http://localhost:3000/quiz`,options);
+  }
+
+  getEssay(topic:any) {
+    const options = { params: new HttpParams().set('topic', topic) };
+    return this.http.get<any>(`http://localhost:3000/essay`,options);
   }
 }
