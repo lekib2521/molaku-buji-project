@@ -1,4 +1,4 @@
-import { Component, input, computed } from '@angular/core';
+import { Component } from '@angular/core';
 import { PromptService } from '../prompt.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
