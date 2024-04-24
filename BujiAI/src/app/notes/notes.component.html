@@ -1,7 +1,4 @@
 <a class="back" routerLink='/home'>Back</a>
-<input type="file" id="file"/>
-<div (click)="generateNotes()"> Submit </div>
-<div>{{notesOutput?.notes}}</div>
 
 <div class="center">
     <ngx-file-drop dropZoneLabel="Drop files here" (onFileDrop)="dropped($event)" 
@@ -26,3 +23,5 @@
         </table>
     </div>
 </div>
+
+<div>{{notesOutput?.notes}}</div>

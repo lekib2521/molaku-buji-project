@@ -14,13 +14,8 @@ import { CommonModule } from '@angular/common';
 export class NotesComponent {
 
   constructor(private promptService: PromptService) { }
-  notesOutput:any = "";
-
-  generateNotes() {
-    this.promptService.getNotes({}).subscribe(data => {     
-      this.notesOutput = data.response;
-    });
-  }
+  notesOutput: any = "";
+  notesInput: any = {};
 
   convertBlobToBase64 = (blob: any) => new Promise((resolve, reject) => {
     const reader = new FileReader;
@@ -40,7 +35,6 @@ export class NotesComponent {
       if (droppedFile.fileEntry.isFile) {
         const fileEntry = droppedFile.fileEntry as FileSystemFileEntry;
         fileEntry.file((file: File) => {
-
           // Here you can access the real file
           console.log(droppedFile.relativePath, file);
           this.convertBlobToBase64(file).then((data: any) => {
@@ -48,6 +42,7 @@ export class NotesComponent {
             data = data.split(',')[1];
             this.promptService.getNotes(data).subscribe(resp => {
               console.log(resp);
+              this.notesOutput = resp.response;
             });
           });
         });
