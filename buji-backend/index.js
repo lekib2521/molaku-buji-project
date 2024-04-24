@@ -36,6 +36,7 @@ const generativeModel = vertex_ai.preview.getGenerativeModel({
   ],
 });
 
+// function to generate quiz and essay based on the parameters set by the user
 async function generateContent(request, res) {
   const streamingResp = await generativeModel.generateContentStream(request);
   let response = "";
@@ -49,8 +50,8 @@ async function generateContent(request, res) {
   res.send({ response });
 }
 
+// get function to generate quiz
 app.get('/quiz', (req, res) => {
-  //here
   console.log(req.query);
   const request = {
     contents: [{
@@ -65,8 +66,8 @@ app.get('/quiz', (req, res) => {
   generateContent(request, res)
 });
 
+// get function to generate essay
 app.get('/essay', (req, res) => {
-  //here
   console.log(req.query);
   const request = {
     contents: [{
@@ -80,6 +81,7 @@ app.get('/essay', (req, res) => {
   generateContent(request, res)
 });
 
+// function to generate notes based on the file provided by the user
 async function generateNotes(request, res) {
   const streamingResp = await generativeModel.generateContentStream(request);
   let response = "";
@@ -93,6 +95,7 @@ async function generateNotes(request, res) {
   res.send({ response });
 }
 
+// converting file to base16
 const image1 = {
   inlineData: {
     mimeType:  'image/jpeg',
@@ -100,8 +103,8 @@ const image1 = {
   }
 }
 
+// get function to generate notes
 app.get('/notes', (req, res) => {
-  //here
   console.log(req.query, image1);
   const request = {
     contents: [
