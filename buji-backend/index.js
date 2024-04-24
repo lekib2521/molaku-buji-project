@@ -3,6 +3,9 @@ const app = express();
 const port = 3000;
 const { VertexAI } = require('@google-cloud/vertexai');
 var fs = require('fs');
+var cors = require('cors');
+app.use(cors());
+app.use(express.json({type: "*/*"}));
 
 // Initialize Vertex with your Cloud project and location
 const vertex_ai = new VertexAI({ project: 'brave-monitor-420011', location: 'us-central1' });
@@ -95,21 +98,23 @@ async function generateNotes(request, res) {
   res.send({ response });
 }
 
-// converting file to base16
-const image1 = {
-  inlineData: {
-    mimeType:  'image/jpeg',
-    data: fs.readFileSync('./images.jpeg', 'base64'),
-  }
-}
-
 // get function to generate notes
-app.get('/notes', (req, res) => {
-  console.log(req.query, image1);
+app.put('/notes', (req, res) => {
+  console.log(req);
+  // creating image object
+  const image1 = {
+    inlineData: {
+      mimeType: 'image/jpeg',
+      data: req.body.body,
+    }
+  }
   const request = {
     contents: [
-      {role: 'user', parts: [image1, {text: `Generate detailed study notes for the content in the given image. The output should be in plain text without bold subitiles or bullet points. Output should not contain any special characters or text formatting. 
-      The output should be a string`}]},
+      {
+        role: 'user', parts: [image1, {
+          text: `Generate detailed study notes for the content in the given image. The output should be in plain text without bold subitiles or bullet points. Output should not contain any special characters or text formatting. 
+      The output should be a string`}]
+      },
     ],
   };
   generateNotes(request, res)
