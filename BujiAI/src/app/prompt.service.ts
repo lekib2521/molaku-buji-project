@@ -29,4 +29,8 @@ export class PromptService {
     };
     return this.http.get<any>(`http://localhost:3000/essay`,options);
   }
+
+  getNotes(topic:any) {
+    return this.http.get<any>(`http://localhost:3000/notes`);
+  }
 }

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { PromptService } from '../prompt.service';
 
 @Component({
   selector: 'app-notes',
@@ -10,4 +11,13 @@ import { RouterLink } from '@angular/router';
 })
 export class NotesComponent {
 
+  constructor(private promptService: PromptService) { }
+  notesOutput:any = "";
+
+  generateNotes() {
+    this.promptService.getNotes({}).subscribe(data => {
+      console.log(data);      
+      this.notesOutput = data.response;
+    });
+  }
 }

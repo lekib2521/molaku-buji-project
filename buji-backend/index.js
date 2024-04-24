@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const port = 3000;
 const { VertexAI } = require('@google-cloud/vertexai');
+var fs = require('fs');
 
 // Initialize Vertex with your Cloud project and location
 const vertex_ai = new VertexAI({ project: 'brave-monitor-420011', location: 'us-central1' });
@@ -77,6 +78,38 @@ app.get('/essay', (req, res) => {
       }],
   };
   generateContent(request, res)
+});
+
+async function generateNotes(request, res) {
+  const streamingResp = await generativeModel.generateContentStream(request);
+  let response = "";
+
+  for await (const item of streamingResp.stream) {
+    response += (item.candidates[0]?.content?.parts[0]?.text);
+  }
+  console.log(response);
+  response = {notes:response};
+  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
+  res.send({ response });
+}
+
+const image1 = {
+  inlineData: {
+    mimeType:  'image/jpeg',
+    data: fs.readFileSync('./images.jpeg', 'base64'),
+  }
+}
+
+app.get('/notes', (req, res) => {
+  //here
+  console.log(req.query, image1);
+  const request = {
+    contents: [
+      {role: 'user', parts: [image1, {text: `Generate detailed study notes for the content in the given image. The output should be in plain text without bold subitiles or bullet points. Output should not contain any special characters or text formatting. 
+      The output should be a string`}]},
+    ],
+  };
+  generateNotes(request, res)
 });
 
 
