@@ -3,11 +3,12 @@ import { RouterLink } from '@angular/router';
 import { PromptService } from '../prompt.service';
 import { NgxFileDropModule, NgxFileDropEntry, FileSystemFileEntry, FileSystemDirectoryEntry } from 'ngx-file-drop';
 import { CommonModule } from '@angular/common';
+import { HeaderComponent } from '../header/header.component';
 
 @Component({
   selector: 'app-notes',
   standalone: true,
-  imports: [RouterLink, NgxFileDropModule, CommonModule],
+  imports: [RouterLink, NgxFileDropModule, CommonModule, HeaderComponent],
   templateUrl: './notes.component.html',
   styleUrl: './notes.component.scss'
 })

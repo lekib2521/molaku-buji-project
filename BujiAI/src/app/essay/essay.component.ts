@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';  
 import { FormsModule } from '@angular/forms';
 import { PromptService } from '../prompt.service';
+import { HeaderComponent } from '../header/header.component';
 
 @Component({
   selector: 'app-essay',
   standalone: true,
-  imports: [RouterLink, FormsModule],
+  imports: [RouterLink, FormsModule, HeaderComponent],
   templateUrl: './essay.component.html',
   styleUrl: './essay.component.scss'
 })

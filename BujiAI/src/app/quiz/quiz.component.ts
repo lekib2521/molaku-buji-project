@@ -3,11 +3,12 @@ import { PromptService } from '../prompt.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';  
+import { HeaderComponent } from '../header/header.component';
 
 @Component({
   selector: 'app-quiz',
   standalone: true,
-  imports: [FormsModule, CommonModule, RouterLink],
+  imports: [FormsModule, CommonModule, RouterLink, HeaderComponent],
   templateUrl: './quiz.component.html',
   styleUrls: ['./quiz.component.scss', '../../assets/main.scss']
 })
