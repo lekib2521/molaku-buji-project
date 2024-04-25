@@ -37,6 +37,6 @@ export class PromptService {
       })
     };
     
-    return this.http.put<any>(`http://localhost:3000/notes`,{body:topic},httpOptions);
+    return this.http.put<any>(`http://localhost:3000/notes`,{topic},httpOptions);
   }
 }

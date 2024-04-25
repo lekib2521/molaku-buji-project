@@ -5,7 +5,8 @@ const { VertexAI } = require('@google-cloud/vertexai');
 var fs = require('fs');
 var cors = require('cors');
 app.use(cors());
-app.use(express.json({type: "*/*"}));
+app.use(express.json({type: "*/*", limit: '50mb'}));
+app.use(express.urlencoded({limit: '50mb'}));
 
 // Initialize Vertex with your Cloud project and location
 const vertex_ai = new VertexAI({ project: 'brave-monitor-420011', location: 'us-central1' });
@@ -104,8 +105,8 @@ app.put('/notes', (req, res) => {
   // creating image object
   const image1 = {
     inlineData: {
-      mimeType: 'image/jpeg',
-      data: req.body.body,
+      mimeType: req.body.topic.mimeType,
+      data: req.body.topic.data,
     }
   }
   const request = {

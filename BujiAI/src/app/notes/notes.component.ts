@@ -36,11 +36,12 @@ export class NotesComponent {
         const fileEntry = droppedFile.fileEntry as FileSystemFileEntry;
         fileEntry.file((file: File) => {
           // Here you can access the real file
-          console.log(droppedFile.relativePath, file);
+          console.log(droppedFile.relativePath, file, fileEntry);
           this.convertBlobToBase64(file).then((data: any) => {
             console.log(data);
+            let notesParams = {data: data.split(',')[1], mimeType: file.type}
             data = data.split(',')[1];
-            this.promptService.getNotes(data).subscribe(resp => {
+            this.promptService.getNotes(notesParams).subscribe(resp => {
               console.log(resp);
               this.notesOutput = resp.response;
             });
