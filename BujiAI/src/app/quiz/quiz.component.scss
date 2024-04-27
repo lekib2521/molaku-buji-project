@@ -3,9 +3,17 @@
     align-items: center;
 
     input {
-        height: 30px;
+        height: 56px;
         width: 250px;
-        border-radius: 5px;
+        border: none;
+        border-radius: 28px;
+        background-color: #ECE6F0;
+    }
+
+    input::placeholder {
+        color: #49454F;
+        font-size: 16px;
+        padding-left: 15px;
     }
 }
 
