@@ -7,7 +7,7 @@ import { HeaderComponent } from '../header/header.component';
   standalone: true,
   imports: [RouterLink, HeaderComponent],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.scss'
+  styleUrls: ['./home.component.scss', '../../styles.scss']
 })
 export class HomeComponent {
 

@@ -1,11 +1,3 @@
-.home-body {
-    height: calc(100vh - 120px);
-    width: calc(100vw - 90px);
-    position: absolute;
-    right: 0;
-    bottom: 0;
-}
-
 .title-wrapper {
     font-size: 57px;
     font-style: normal;
@@ -48,14 +40,13 @@
     line-height: 28px;
     color: #49454F;
     padding: 16px;
+    cursor: pointer;
 }
 
 .icon{
     height: 40px;
     width: 40px;
-    // position: absolute;
-    right: 5px;
-    bottom: 5px;
+    align-self: flex-end;
     &.quiz{
         background: url(../../assets/icons/quiz-icon.svg) no-repeat;
     }

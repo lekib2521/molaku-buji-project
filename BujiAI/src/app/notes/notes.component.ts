@@ -10,7 +10,7 @@ import { HeaderComponent } from '../header/header.component';
   standalone: true,
   imports: [RouterLink, NgxFileDropModule, CommonModule, HeaderComponent],
   templateUrl: './notes.component.html',
-  styleUrl: './notes.component.scss'
+  styleUrls: ['./notes.component.scss', '../../styles.scss']
 })
 export class NotesComponent {
 

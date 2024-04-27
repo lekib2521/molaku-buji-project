@@ -9,7 +9,7 @@ import { HeaderComponent } from '../header/header.component';
   standalone: true,
   imports: [RouterLink, FormsModule, HeaderComponent],
   templateUrl: './essay.component.html',
-  styleUrl: './essay.component.scss'
+  styleUrls: ['./essay.component.scss', '../../styles.scss']
 })
 export class EssayComponent {
 

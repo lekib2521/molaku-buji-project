@@ -2,3 +2,11 @@
 * {
     box-sizing: border-box;
 }
+
+.page-body {
+    height: calc(100vh - 120px);
+    width: calc(100vw - 90px);
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}

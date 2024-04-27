@@ -10,7 +10,7 @@ import { HeaderComponent } from '../header/header.component';
   standalone: true,
   imports: [FormsModule, CommonModule, RouterLink, HeaderComponent],
   templateUrl: './quiz.component.html',
-  styleUrls: ['./quiz.component.scss']
+  styleUrls: ['./quiz.component.scss', '../../styles.scss']
 })
 export class QuizComponent {
 
