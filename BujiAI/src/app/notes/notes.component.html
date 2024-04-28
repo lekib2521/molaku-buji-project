@@ -24,5 +24,8 @@
         </div>
     </div>
 
-    <div>{{notesOutput?.notes}}</div>
+    <div #dataToExport>{{notesOutput?.notes}}</div>
+    <div class="export-wrapper">
+        <div class="download" (click)="downloadAsPdf()" title="Download as PDF"></div>
+    </div>
 </div>

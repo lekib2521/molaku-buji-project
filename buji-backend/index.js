@@ -113,7 +113,7 @@ app.put('/notes', (req, res) => {
     contents: [
       {
         role: 'user', parts: [image1, {
-          text: `Generate detailed study notes for the content in the given image. The output should be in plain text without bold subitiles or bullet points. Output should not contain any special characters or text formatting. 
+        text: `Generate detailed study notes for the content in the given image. The output should be in plain text without bold subtitles or bullet points. Output should not contain any special characters or text formatting. 
       The output should be a string`}]
       },
     ],

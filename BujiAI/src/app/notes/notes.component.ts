@@ -4,6 +4,10 @@ import { PromptService } from '../prompt.service';
 import { NgxFileDropModule, NgxFileDropEntry, FileSystemFileEntry, FileSystemDirectoryEntry } from 'ngx-file-drop';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from '../header/header.component';
+import domToImage from 'dom-to-image';
+import jsPDF from 'jspdf';
+import moment from 'moment';
+import { ViewChild, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-notes',
@@ -15,6 +19,7 @@ import { HeaderComponent } from '../header/header.component';
 export class NotesComponent {
 
   constructor(private promptService: PromptService) { }
+  @ViewChild('dataToExport', { static: false }) dataToExport!: ElementRef;
   notesOutput: any = "";
   notesInput: any = {};
 
@@ -62,5 +67,43 @@ export class NotesComponent {
 
   public fileLeave(event: any) {
     console.log(event);
+  }
+
+  public downloadAsPdf(): void {
+    const width = this.dataToExport.nativeElement.clientWidth;
+    const height = this.dataToExport.nativeElement.clientHeight + 40;
+    let orientation = "";
+    let imageUnit = 'pt';
+    if (width > height) {
+      orientation = "l";
+    } else {
+      orientation = "p";
+    }
+    domToImage.toPng(this.dataToExport.nativeElement, {
+      width: width,
+      height: height
+    })
+      .then((result: any) => {
+        let jsPdfOptions = {
+          orientation: width > height ? 'l' : 'p',
+          unit: 'pt',
+          format: [width + 50, height + 220]
+        };
+        const pdf = new jsPDF({
+          orientation: width > height ? 'l' : 'p',
+          unit: 'pt',
+          format: [width + 50, height + 220]
+        });
+        pdf.setFontSize(48);
+        pdf.setTextColor('#2585fe');
+        // pdf.text(this.pdfName.value ? this.pdfName.value.toUpperCase() : 'Untitled dashboard'.toUpperCase(), 25, 75);
+        pdf.setFontSize(24);
+        pdf.setTextColor('#131523');
+        pdf.text('Report date: ' + moment().format('ll'), 25, 115);
+        pdf.addImage(result, 'PNG', 25, 185, width, height);
+        pdf.save('file_name' + '.pdf');
+      })
+      .catch((error: any) => {
+      });
   }
 }
