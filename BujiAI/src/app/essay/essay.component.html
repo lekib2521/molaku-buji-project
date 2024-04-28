@@ -18,11 +18,12 @@
         <div class='submit button' (click)="generateEssay()">Submit</div>
     </div>
     <div class="essay-output-wrapper">
-        <div class="essay title">{{essayOutput?.title}}</div>
-        <div class="essay body">{{essayOutput?.body}}</div>
+        <div class="output-container" #dataToExport>
+            <div class="essay title">{{essayOutput?.title}}</div>
+            <div class="essay body">{{essayOutput?.body}}</div>
+        </div>
         <div class="export-wrapper">
-            <div class="pdf"></div>
-            <div class="doc"></div>
+            <div class="download" (click)="downloadAsPdf()" title="Download as PDF"></div>
         </div>
     </div>
 </div>

@@ -18,4 +18,12 @@ input::placeholder {
 
 .essay-output-wrapper{
     width: 50vw;
+    display: flex;
+}
+
+.download {
+    background: url(../../assets/icons/file_download.svg) no-repeat;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
 }
