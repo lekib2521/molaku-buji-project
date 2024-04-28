@@ -32,7 +32,7 @@
     width: 254px;
     height: 226px;
     align-items: flex-start;
-    background-color: #E6E0E9;
+    background-color: #f0f4f9;
     border-radius: 12px;
     font-size: 22px;
     font-style: normal;
@@ -41,6 +41,10 @@
     color: #49454F;
     padding: 16px;
     cursor: pointer;
+
+    &:hover {
+        background-color: #dde3ea;
+    }
 }
 
 .icon{
