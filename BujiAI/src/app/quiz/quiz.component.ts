@@ -22,13 +22,16 @@ export class QuizComponent {
   answerCorrect: any = null;
   quizStarted: boolean = false;
   focusQno: any=0;
+  contentReady: boolean = true;
 
   generateQuiz() {
+    this.contentReady = false;
     console.log(this.topic);
     this.promptService.getQuiz(this.topic).subscribe(data => {
       this.quizData = data.response;
       this.quizData.rightAnswer = 0;
       this.questionReady = true;
+      this.contentReady = true;
     });
   }
 
