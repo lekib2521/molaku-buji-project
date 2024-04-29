@@ -1,21 +1,24 @@
 <app-header></app-header>
 <div class="page-body divider">
     <div class="essay-input-wrapper">
-        <div>What is your essay about?</div>
+        <div class="label">What is your essay about?</div>
         <input class="topic" [(ngModel)]="essayParams.topic" placeholder="What is your essay about?"/>
-        <div>Why are you writing the essay?</div>
+        <div class="label">Why are you writing the essay?</div>
         <input class="purpose"  [(ngModel)]="essayParams.purpose" placeholder="Why are you writing the essay?"/>
-        <div>Whose perspective are you writing the essay from?</div>
+        <div class="label">Whose perspective are you writing the essay from?</div>
         <input class="author" [(ngModel)]="essayParams.author" placeholder="Whose perspective are you writing the essay from?"/>
-        <div>Who will read this essay?</div>
+        <div class="label">Who will read this essay?</div>
         <input class="reader" [(ngModel)]="essayParams.reader" placeholder="Who will read this essay?"/>
-        <div>Word Limit</div>
+        <div class="label">Word Limit</div>
         <input class="word-count" [(ngModel)]="essayParams.wordcount" placeholder="Word Count"/>
-        <div>Tone</div>
+        <div class="label">Tone</div>
         <input class="tone" [(ngModel)]="essayParams.tone" placeholder="Tone"/>
-        <div>Sample of your writing</div>
+        <div class="label">Sample of your writing</div>
         <input class="sample" [(ngModel)]="essayParams.sample" placeholder="Sample of writing style"/>
-        <div class='submit button' (click)="generateEssay()">Submit</div>
+        <div class="button-container">
+            <div class='clear button' (click)="clearInput()"></div>
+            <div class='submit button' (click)="generateEssay()"></div>
+        </div>
     </div>
     <div class="essay-output-wrapper">
         <div class="output-container" #dataToExport>

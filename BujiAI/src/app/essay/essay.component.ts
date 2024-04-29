@@ -38,6 +38,18 @@ export class EssayComponent {
     });
   }
 
+  clearInput() {
+    this.essayParams = {
+      topic: '',
+      purpose: '',
+      author: '',
+      reader: '',
+      wordcount: null,
+      tone: '',
+      sample: ''
+    };
+  }
+
   public downloadAsPdf(): void {
     const width = this.dataToExport.nativeElement.clientWidth;
     const height = this.dataToExport.nativeElement.clientHeight + 40;
