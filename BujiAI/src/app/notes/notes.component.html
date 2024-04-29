@@ -28,7 +28,10 @@
         </div>
     </div>
     <div class="output-wrapper">
-        <div #dataToExport>{{notesOutput?.notes}}</div>
+        <div class="output-container" #dataToExport>
+            <div class="loader" *ngIf="!contentReady"></div>
+            {{notesOutput?.notes}}
+        </div>
         <div class="export-wrapper">
             <div class="download button" (click)="downloadAsPdf()" title="Download as PDF"></div>
         </div>

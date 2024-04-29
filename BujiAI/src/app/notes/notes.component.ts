@@ -9,6 +9,7 @@ import jsPDF from 'jspdf';
 import moment from 'moment';
 import { ViewChild, ElementRef } from '@angular/core';
 
+
 @Component({
   selector: 'app-notes',
   standalone: true,
@@ -22,6 +23,7 @@ export class NotesComponent {
   @ViewChild('dataToExport', { static: false }) dataToExport!: ElementRef;
   notesOutput: any = "";
   notesInput: any = {};
+  contentReady: boolean = true;
 
   convertBlobToBase64 = (blob: any) => new Promise((resolve, reject) => {
     const reader = new FileReader;
@@ -47,9 +49,11 @@ export class NotesComponent {
             console.log(data);
             let notesParams = {data: data.split(',')[1], mimeType: file.type}
             data = data.split(',')[1];
+            this.contentReady = false;
             this.promptService.getNotes(notesParams).subscribe(resp => {
               console.log(resp);
               this.notesOutput = resp.response;
+              this.contentReady = true;
             });
           });
         });
