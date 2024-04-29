@@ -2,11 +2,21 @@
 <div class="page-body">
     <div class="topic-input">
         <div class="input-wrapper">
-            <input [(ngModel)]="topic.text" placeholder="Enter a topic here"/>
-            <input [(ngModel)]="topic.qno" placeholder="Enter number of questions here"/>
-            <div class='clear button' (click)="topic.text='';topic.qno=''">X</div>
-            <div class='submit button' (click)="generateQuiz()">Submit</div>
+            <div class="input-container">
+                <div class="label">Topic</div>
+                <input [(ngModel)]="topic.text" placeholder="Enter a topic here"/>
+            </div>
+            <div class="input-container">
+                <div class="label">Number of Questions</div>
+                <input [(ngModel)]="topic.qno" placeholder="Enter number of questions here"/>
+            </div>
+            <div class='clear button' (click)="topic.text='';topic.qno=''"></div>
+            <div class='submit button' (click)="generateQuiz()"></div>
         </div>
+    </div>
+
+    <div *ngIf="!questionReady" class="quiz-container empty">
+        <span>Test your knowledge by entering a topic and number of questions.</span>
     </div>
 
     <div *ngIf="questionReady" class="quiz-container">
