@@ -29,8 +29,8 @@
 
 .card {
     display: flex;
-    width: 254px;
-    height: 226px;
+    width: 260px;
+    height: 260px;
     align-items: flex-start;
     background-color: #f0f4f9;
     border-radius: 12px;
@@ -42,9 +42,11 @@
     padding: 16px;
     cursor: pointer;
     box-shadow: 2px 2px 4px #CAC4D0;
+    transition: transform .2s;
 
     &:hover {
         background-color: #dde3ea;
+        transform: scale(1.1);
     }
 }
 

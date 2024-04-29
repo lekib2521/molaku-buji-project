@@ -1,5 +1,6 @@
 <div class="header-body">
     <div class="nav-container">
+        <div class="icon" routerLink='/home' (click)="route(4)"></div>
         <div class="tab-wrapper">
             <div class="tab" [ngClass]="{'selected':routeValue=='quiz'}"  routerLink='/quiz' (click)="route(1)">Quiz</div>
             <div class="tab" [ngClass]="{'selected':routeValue=='essay'}"  routerLink='/essay' (click)="route(2)">Essay</div>

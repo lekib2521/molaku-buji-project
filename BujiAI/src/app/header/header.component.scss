@@ -22,12 +22,21 @@
         height: 40px;
         display: flex;
         align-items: center;
+        padding-left: 10px;
         color: #5f6368;
         font-size: 18px;
+        width: 80px;
+
+        &:hover{
+            font-weight: 600;
+            background-color: #FFFBFE;
+            border-radius: 20px 0px 0px 20px;
+            border: solid 1px #CAC4D0;  
+        }
     }
 
     .selected {
-        background-color: white;
+        background-color: #FFFBFE;
         width: 80px;
         display: flex;
         align-items: center;
@@ -68,4 +77,18 @@
     align-items: center;
     justify-content: center;
     border-radius: 10px; 
+}
+
+.icon {
+    background: url(../../assets/icons/bee_icon.png) no-repeat;
+    height: 50px;
+    width: 50px;
+    background-size: contain;
+    margin: 15px;
+    cursor: pointer;
+    transition: transform .2s;
+
+    &:hover {
+        transform: scale(1.1);
+    }
 }
