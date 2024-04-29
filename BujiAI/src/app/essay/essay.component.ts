@@ -7,11 +7,12 @@ import domToImage from 'dom-to-image';
 import jsPDF from 'jspdf';
 import moment from 'moment';
 import { ViewChild, ElementRef } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-essay',
   standalone: true,
-  imports: [RouterLink, FormsModule, HeaderComponent],
+  imports: [RouterLink, FormsModule, HeaderComponent, CommonModule],
   templateUrl: './essay.component.html',
   styleUrls: ['./essay.component.scss', '../../styles.scss']
 })
@@ -31,10 +32,13 @@ export class EssayComponent {
     sample: 'I write like this always.'
   };
   essayOutput: any = {};
+  contentReady: boolean = true;
 
   generateEssay() {
+    this.contentReady = false;
     this.promptService.getEssay(this.essayParams).subscribe(data => {
       this.essayOutput = data.response;
+      this.contentReady = true;
     });
   }
 

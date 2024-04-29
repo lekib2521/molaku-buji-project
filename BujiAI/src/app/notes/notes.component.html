@@ -1,31 +1,36 @@
 <app-header></app-header>
 <div class="page-body">
-    <div class="center">
-        <ngx-file-drop dropZoneLabel="Drop files here" (onFileDrop)="dropped($event)" (onFileOver)="fileOver($event)"
-            (onFileLeave)="fileLeave($event)">
-            <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">
-                Optional custom content that replaces the the entire default content.
-                <button type="button" (click)="openFileSelector()">Browse Files</button>
-            </ng-template>
-        </ngx-file-drop>
-        <div class="upload-table">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                    </tr>
-                </thead>
-                <tbody class="upload-name-style">
-                    <tr *ngFor="let item of files; let i=index">
-                        <td><strong>{{ item.relativePath }}</strong></td>
-                    </tr>
-                </tbody>
-            </table>
+    <div class="input-wrapper">
+        <div class="drop-wrapper">
+            <ngx-file-drop dropZoneLabel="Drop files here" (onFileDrop)="dropped($event)" (onFileOver)="fileOver($event)"
+                (onFileLeave)="fileLeave($event)">
+                <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">
+                    <div>
+                        <div class="browse-text">Drop your files here</div>
+                        <button class="browse-button" (click)="openFileSelector()">Browse Files</button>
+                    </div> 
+                </ng-template>
+            </ngx-file-drop>
+            <div class="upload-table">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                        </tr>
+                    </thead>
+                    <tbody class="upload-name-style">
+                        <tr *ngFor="let item of files; let i=index">
+                            <td><strong>{{ item.relativePath }}</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
-
-    <div #dataToExport>{{notesOutput?.notes}}</div>
-    <div class="export-wrapper">
-        <div class="download" (click)="downloadAsPdf()" title="Download as PDF"></div>
+    <div class="output-wrapper">
+        <div #dataToExport>{{notesOutput?.notes}}</div>
+        <div class="export-wrapper">
+            <div class="download button" (click)="downloadAsPdf()" title="Download as PDF"></div>
+        </div>
     </div>
 </div>

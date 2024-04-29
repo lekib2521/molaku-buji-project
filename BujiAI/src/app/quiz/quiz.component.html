@@ -16,7 +16,8 @@
     </div>
 
     <div *ngIf="!questionReady" class="quiz-container empty">
-        <span>Test your knowledge by entering a topic and number of questions.</span>
+        <div>Test your knowledge by entering a topic and number of questions.</div>
+        <div class="loader" *ngIf="!contentReady"></div>
     </div>
 
     <div *ngIf="questionReady" class="quiz-container">
@@ -39,4 +40,3 @@
         <div class="score" *ngIf="focusQno==-1">Your score is {{this.quizData.rightAnswer}}/{{topic.qno}}</div>
     </div>
 </div>
-<div class="loader" *ngIf="!contentReady"></div>
