@@ -8,7 +8,7 @@
             </div>
             <div class="input-container">
                 <div class="label">Number of Questions</div>
-                <input [(ngModel)]="topic.qno" placeholder="Enter number of questions here"/>
+                <input type="number" [(ngModel)]="topic.qno" placeholder="Enter number of questions here"/>
             </div>
             <div class='clear button' (click)="topic.text='';topic.qno=''"></div>
             <div class='submit button' (click)="generateQuiz()"></div>
