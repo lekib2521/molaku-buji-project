@@ -8,6 +8,15 @@ export class PromptService {
   constructor(
     private http: HttpClient,
   ) { }
+  private routeValue: any = 'home';
+
+  setRouteValue(value: any) {
+    this.routeValue = value;
+  }
+
+  getRouteValue() {
+    return this.routeValue;
+  }
 
   getQuiz(topic:any) {
     const options = { params: new HttpParams()

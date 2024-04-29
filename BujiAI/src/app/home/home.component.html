@@ -5,15 +5,15 @@
         <div class="subtitle">Let's Learn Something New</div>
     </div>
     <div class="card-drawer">
-        <div routerLink='/quiz' class="card">
+        <div routerLink='/quiz' (click)="route(1)" class="card">
             <div>Generate Quizzes for any topic</div>
             <div class="quiz icon"></div>
         </div>
-        <div routerLink='/essay' class="card">
+        <div routerLink='/essay'(click)="route(2)" class="card">
             <div>Help write an essay for school</div>
             <div class="essay icon"></div>
         </div>
-        <div routerLink="/notes" class="card">
+        <div routerLink="/notes" (click)="route(3)" class="card">
             <div>Create notes from study material</div>
             <div class="notes icon"></div>
         </div>

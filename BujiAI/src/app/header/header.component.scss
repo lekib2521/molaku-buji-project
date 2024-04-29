@@ -9,6 +9,35 @@
     height: 98vh;
 }
 
+.tab-wrapper {
+    position: absolute;
+    top: 110px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80px;
+
+    .tab {
+        cursor: pointer;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        color: #5f6368;
+        font-size: 18px;
+    }
+
+    .selected {
+        background-color: white;
+        width: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 20px 0px 0px 20px;
+        box-shadow: 0px 2px 2px #CAC4D0;    
+        font-weight: 600;
+    }
+}
+
 .header-container {
     display: flex;
     align-items: center;
@@ -17,8 +46,7 @@
 }
 
 .title {
-    font-family: "Roboto", sans-serif;
-    font-size: 1.25rem;
+    font-size: 2rem;
     letter-spacing: 2px;
     line-height: 1.75rem;
     margin-left:16px;
@@ -39,4 +67,5 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    border-radius: 10px; 
 }
