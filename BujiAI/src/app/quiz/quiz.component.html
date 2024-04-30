@@ -22,7 +22,7 @@
 
     <div *ngIf="questionReady" class="quiz-container">
         <div *ngIf="!quizStarted" class="start" (click)="progressQuiz(1)">Start Quiz</div>
-        <div *ngIf="quizStarted&&focusQno>-1">
+        <div *ngIf="quizStarted&&focusQno>-1" class="question-wrapper">
             <div class="question">{{quizData[focusQno].question}}</div>
             <div class="option" (click)="optionSelect('a')"><input type="checkbox"
                     [(ngModel)]="quizData[focusQno].a.checked" />a. {{quizData[focusQno].a.text}}</div>
@@ -32,8 +32,10 @@
                     [(ngModel)]="quizData[focusQno].c.checked" />c. {{quizData[focusQno].c.text}}</div>
             <div class="option" (click)="optionSelect('d')"><input type="checkbox"
                     [(ngModel)]="quizData[focusQno].d.checked" />d. {{quizData[focusQno].d.text}}</div>
-            <div class="correct-answer" *ngIf="answerCorrect">You have chosen the correct option</div>
-            <div class="wrong-answer" *ngIf="answerCorrect===false">You have chosen the wrong option. Try again.</div>
+            <div class="answer-validation">
+                <div class="correct-answer" *ngIf="answerCorrect">You have chosen the correct option</div>
+                <div class="wrong-answer" *ngIf="answerCorrect===false">You have chosen the wrong option. Try again.</div>
+            </div>
             <div class="next" *ngIf="focusQno<topic.qno&&focusQno>-1" (click)="progressQuiz(focusQno+1)">Next</div>
             <div class="next" *ngIf="focusQno==topic.qno" (click)="progressQuiz(-1)">Finish Quiz and View Score</div>
         </div>
