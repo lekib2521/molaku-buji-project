@@ -16,8 +16,8 @@
         <div class="label">Sample of your writing</div>
         <input class="sample" [(ngModel)]="essayParams.sample" placeholder="Sample of writing style"/>
         <div class="button-container">
-            <div class='clear button' (click)="clearInput()"></div>
-            <div class='submit button' (click)="generateEssay()"></div>
+            <div class='clear button' title="Clear Input" (click)="clearInput()"></div>
+            <div class='submit button' title="Generate Essay" (click)="generateEssay()"></div>
         </div>
     </div>
     <div class="essay-output-wrapper">
