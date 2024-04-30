@@ -61,7 +61,7 @@ app.get('/quiz', (req, res) => {
     contents: [{
         role: 'user', 
         parts: [{
-          text: `Generate ${req.query.qno} multiple choice questions on the topic of ${req.query.text} in the following format, I should be able to parse the questions and their options as JSON from the response.:
+          text: `Generate ${req.query.qno} multiple choice questions on the topic of ${req.query.text} of difficulty level ${req.query.difficulty} in the following format, I should be able to parse the questions and their options as JSON from the response.:
           1:{question: Question text, a: {text: "Option 1"}, b: {text: "Option 2"}, c: {text: Option 3}, d: {text: Option 4}, correctAnswer: a},
           2:{question: Question text, a: {text: "Option 1"}, b: {text: "Option 2"}, c: {text: Option 3}, d: {text: Option 4}, correctAnswer: a}`
         }],

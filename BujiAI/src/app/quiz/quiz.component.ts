@@ -17,7 +17,7 @@ export class QuizComponent {
   constructor(private promptService: PromptService) { }
 
   quizData: any;
-  topic: any= {text:'Science',qno:1};
+  topic: any= {text:'Science',qno:1, diffulty: null};
   questionReady: boolean = false;
   answerCorrect: any = null;
   quizStarted: boolean = false;
@@ -27,7 +27,7 @@ export class QuizComponent {
   generateQuiz() {
     this.contentReady = false;
     this.questionReady = false;
-    console.log(this.topic);
+    this.topic.difficulty = !this.topic.difficulty? 'easy' : ['easy','medium','hard'][this.topic.difficulty]; 
     this.promptService.getQuiz(this.topic).subscribe(data => {
       this.quizData = data.response;
       this.focusQno = 0;
@@ -58,6 +58,10 @@ export class QuizComponent {
     }
 
     if(!this.quizData[this.focusQno][option].checked) this.answerCorrect = null
+  }
+
+  setDifficulty(type:any){
+    this.topic.difficulty = this.topic.difficulty !== type ? type : null; 
   }
 
   ngOnInit() {

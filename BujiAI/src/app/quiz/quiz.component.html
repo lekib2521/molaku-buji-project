@@ -10,8 +10,18 @@
                 <div class="label">Number of Questions</div>
                 <input type="number" [(ngModel)]="topic.qno" placeholder="Enter number of questions here"/>
             </div>
-            <div class='clear button' title="Clear Input" (click)="topic.text='';topic.qno=''"></div>
-            <div class='submit button' [ngClass]="{'disabled':!contentReady}" title="Generate Quiz" (click)="generateQuiz()"></div>
+            <div class="input-container">
+                <div class="label">Difficulty Level</div>
+                <div class="diff-drawer">
+                    <div class="diff-opt" [ngClass]="{'selected':topic.difficulty==0}" (click)="setDifficulty(0)">Easy</div>
+                    <div class="diff-opt" [ngClass]="{'selected':topic.difficulty==1}" (click)="setDifficulty(1)">Medium</div>
+                    <div class="diff-opt" [ngClass]="{'selected':topic.difficulty==2}" (click)="setDifficulty(2)">Hard</div>
+                </div>
+            </div>
+            <div class="button-drawer">
+                <div class='clear button' title="Clear Input" (click)="topic.text='';topic.qno=''"></div>
+                <div class='submit button' [ngClass]="{'disabled':!contentReady}" title="Generate Quiz" (click)="generateQuiz()"></div>
+            </div>
         </div>
     </div>
 

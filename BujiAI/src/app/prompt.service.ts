@@ -22,6 +22,7 @@ export class PromptService {
     const options = { params: new HttpParams()
       .set('qno', topic.qno)
       .set('text',topic.text) 
+      .set('difficulty', topic.difficulty)
     };
     return this.http.get<any>(`http://localhost:3000/quiz`,options);
   }

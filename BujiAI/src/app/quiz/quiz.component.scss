@@ -8,7 +8,7 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
-    width: 50vw;
+    width: 70vw;
     height: 100px;
     margin: 30px 0 15px 0;
     border-radius: 5px;
@@ -45,9 +45,34 @@
     margin-left: 20px;
     margin-bottom: 2px;
 }
-.option {
+
+.diff-opt {
+    width: 80px;
+    border-radius: 20px;
+    background-color: #f0f4f9;;
+    border: solid 0.5px #79747E20;
+    box-shadow: 0 2px 5px 1px rgba(64,60,67,.16);
     display: flex;
     align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    &:hover {
+        background-color: #dde3ea;
+    }
+
+    &.selected {
+        border: solid 1px #49454F;
+        box-shadow: none;
+    }
+}
+
+
+.diff-drawer {
+    display: flex;
+    height: 40px;
+    width: 250px;
+    justify-content: space-between;
 }
 
 .button {
@@ -78,6 +103,11 @@
     background: url(../../assets/icons/clear.svg) no-repeat;
 }
 
+.button-drawer {
+    display: flex;
+    justify-self: flex-end;
+}
+
 .quiz-container {
     margin: 15px 0 30px 0; 
     width: 70vw;
@@ -104,6 +134,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
 }
 
 .question {
@@ -116,7 +147,6 @@
 .option {
     display: flex;
     align-items: center;
-    width: 100%;
     height: 50px;
     border-radius: 5px;
     background-color: #E6E0E9;
@@ -126,6 +156,7 @@
     font-size: 20px;
     margin: 5px;
     padding: 5px;
+    width: 60vw;
     &:hover {
         background-color: #FAFAFA;
         font-weight: 600;
