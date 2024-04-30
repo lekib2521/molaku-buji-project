@@ -58,3 +58,41 @@
     justify-content: flex-end;
 }
 
+.browse-text {
+    font-size: 20px;
+    color: #49454F;
+    display: flex;
+    justify-content: center;
+    margin: 5px;
+}
+
+.browse-button {
+    height: 40px;
+    width: 200px;
+    border-radius: 5px;
+    border: none;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    background-color: #E6E0E9 !important;
+    box-shadow: 0 2px 5px 1px rgba(64, 60, 67, 0.16) !important;
+    transition: transform 0.2s;
+
+    &:hover {
+        transform: scale(1.01);
+        background-color: #CFD8DC !important;
+    }
+}
+
+.file-wrapper {
+    margin: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    border: solid 0.5px #79747E20;
+    box-shadow: 0 0.5px 0.5px 0.5px rgba(64,60,67,.16);
+}
+
+.file {
+    color: #49454F;
+}
+

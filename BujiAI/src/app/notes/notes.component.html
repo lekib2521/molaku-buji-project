@@ -2,28 +2,18 @@
 <div class="page-body">
     <div class="input-wrapper">
         <div class="drop-wrapper">
-            <ngx-file-drop dropZoneLabel="Drop files here" (onFileDrop)="dropped($event)" (onFileOver)="fileOver($event)"
-                (onFileLeave)="fileLeave($event)">
+            <ngx-file-drop dropZoneLabel="Drop files here" dropZoneClassName="drop-zone" contentClassName="drop-content"
+                (onFileDrop)="dropped($event)" (onFileOver)="fileOver($event)" (onFileLeave)="fileLeave($event)">
                 <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">
                     <div>
                         <div class="browse-text">Drop your files here</div>
                         <button class="browse-button" (click)="openFileSelector()">Browse Files</button>
-                    </div> 
+                    </div>
                 </ng-template>
             </ngx-file-drop>
-            <div class="upload-table">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                        </tr>
-                    </thead>
-                    <tbody class="upload-name-style">
-                        <tr *ngFor="let item of files; let i=index">
-                            <td><strong>{{ item.relativePath }}</strong></td>
-                        </tr>
-                    </tbody>
-                </table>
+
+            <div class="file-wrapper" *ngFor="let item of files; let i=index">
+                <div class="file">{{ item.relativePath }}</div>
             </div>
         </div>
     </div>
