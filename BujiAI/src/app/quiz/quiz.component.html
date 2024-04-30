@@ -16,7 +16,7 @@
     </div>
 
     <div *ngIf="!questionReady" class="quiz-container empty">
-        <div>Test your knowledge by entering a topic and number of questions.</div>
+        <div *ngIf="contentReady">Test your knowledge by entering a topic and number of questions.</div>
         <div class="loader" *ngIf="!contentReady"></div>
     </div>
 
@@ -24,13 +24,13 @@
         <div *ngIf="!quizStarted" class="start" (click)="progressQuiz(1)">Start Quiz</div>
         <div *ngIf="quizStarted&&focusQno>-1" class="question-wrapper">
             <div class="question">{{quizData[focusQno].question}}</div>
-            <div class="option" (click)="optionSelect('a')"><input type="checkbox"
+            <div class="option" (click)="optionSelect('a')" [ngClass]="{'selected':quizData[focusQno].a.checked}"><input type="checkbox"
                     [(ngModel)]="quizData[focusQno].a.checked" />a. {{quizData[focusQno].a.text}}</div>
-            <div class="option" (click)="optionSelect('b')"><input type="checkbox"
+            <div class="option" (click)="optionSelect('b')" [ngClass]="{'selected':quizData[focusQno].b.checked}"><input type="checkbox"
                     [(ngModel)]="quizData[focusQno].b.checked" />b. {{quizData[focusQno].b.text}}</div>
-            <div class="option" (click)="optionSelect('c')"><input type="checkbox"
+            <div class="option" (click)="optionSelect('c')" [ngClass]="{'selected':quizData[focusQno].c.checked}"><input type="checkbox"
                     [(ngModel)]="quizData[focusQno].c.checked" />c. {{quizData[focusQno].c.text}}</div>
-            <div class="option" (click)="optionSelect('d')"><input type="checkbox"
+            <div class="option" (click)="optionSelect('d')" [ngClass]="{'selected':quizData[focusQno].d.checked}"><input type="checkbox"
                     [(ngModel)]="quizData[focusQno].d.checked" />d. {{quizData[focusQno].d.text}}</div>
             <div class="answer-validation">
                 <div class="correct-answer" *ngIf="answerCorrect">You have chosen the correct option</div>

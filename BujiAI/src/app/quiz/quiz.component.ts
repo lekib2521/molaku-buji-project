@@ -26,17 +26,22 @@ export class QuizComponent {
 
   generateQuiz() {
     this.contentReady = false;
+    this.questionReady = false;
     console.log(this.topic);
     this.promptService.getQuiz(this.topic).subscribe(data => {
       this.quizData = data.response;
+      this.focusQno = 0;
       this.quizData.rightAnswer = 0;
       this.questionReady = true;
       this.contentReady = true;
+      this.quizStarted = false;
+      this.answerCorrect = null;
     });
   }
 
   progressQuiz(qno:number){
     this.focusQno = qno;
+    this.answerCorrect = null;
     if(qno==-1){
       return;
     } else if (qno==1){
