@@ -21,7 +21,7 @@
     </div>
 
     <div *ngIf="questionReady" class="quiz-container">
-        <div *ngIf="!quizStarted" (click)="progressQuiz(1)">Start Quiz</div>
+        <div *ngIf="!quizStarted" class="start" (click)="progressQuiz(1)">Start Quiz</div>
         <div *ngIf="quizStarted&&focusQno>-1">
             <div class="question">{{quizData[focusQno].question}}</div>
             <div class="option" (click)="optionSelect('a')"><input type="checkbox"
