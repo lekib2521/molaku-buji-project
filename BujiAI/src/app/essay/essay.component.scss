@@ -10,9 +10,13 @@ input {
     width: 40vw;
     border: none;
     border-radius: 16px;
-    background-color: #ECE6F0;
+    background-color: #f0f4f9;
     padding-left: 20px;
     margin-bottom: 5px;
+    box-shadow: 0 2px 5px 1px rgba(64,60,67,.16);
+    &:hover {
+        background-color: #dde3ea;
+    }
 }
 
 input::placeholder {
@@ -34,6 +38,23 @@ input::placeholder {
     flex-direction: column;
 }
 
+.essay {
+    &.title {
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+    &.body {
+        overflow-y: auto;
+    }
+}
+
+.essay-input-wrapper {
+    border-radius: 5px;
+    background-color: #f8fafd;
+    border: solid 0.5px #79747E20;
+}
+
 .output-container{
     background-color: white;
     min-height: 65vh;
@@ -46,17 +67,14 @@ input::placeholder {
 
 .download {
     background: url(../../assets/icons/file_download.svg) no-repeat;
-    background-color: #E8DEF8;
 }
 
 .submit {
     background: url(../../assets/icons/play_arrow.svg) no-repeat;
-    background-color: #E8DEF8;
 }
 
 .clear {
     background: url(../../assets/icons/clear.svg) no-repeat;
-    background-color: #F9DEDC;
 }
 
 .button {
@@ -69,6 +87,14 @@ input::placeholder {
     align-items: center;
     background-size: cover !important;
     margin: 10px;
+    background-color: #E6E0E9 !important;
+    box-shadow: 0 2px 5px 1px rgba(64, 60, 67, 0.16) !important;
+    transition: transform 0.2s;
+
+    &:hover {
+        transform: scale(1.1);
+        background-color: #CFD8DC !important;
+    }
 }
 
 .button-container {
