@@ -85,14 +85,49 @@
 }
 
 .file-wrapper {
+    height: 12.5vh;
     margin: 20px;
     padding: 10px;
     border-radius: 5px;
     border: solid 0.5px #79747E20;
     box-shadow: 0 0.5px 0.5px 0.5px rgba(64,60,67,.16);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .file {
     color: #49454F;
 }
 
+.button {
+    height: 45px !important;
+    width: 45px !important;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: cover !important;
+    margin: 10px;
+    background-color: #E6E0E9 !important;
+    box-shadow: 0 2px 5px 1px rgba(64, 60, 67, 0.16) !important;
+    transition: transform 0.2s;
+
+    &:hover {
+        transform: scale(1.01);
+        background-color: #CFD8DC !important;
+    }
+}
+
+.submit {
+    background: url(../../assets/icons/play_arrow.svg) no-repeat;
+}
+
+.clear {
+    background: url(../../assets/icons/clear.svg) no-repeat;
+}
+
+.button-drawer {
+    display: flex;
+}

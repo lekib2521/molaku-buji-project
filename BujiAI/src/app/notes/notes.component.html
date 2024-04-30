@@ -14,6 +14,10 @@
 
             <div class="file-wrapper" *ngFor="let item of files; let i=index">
                 <div class="file">{{ item.relativePath }}</div>
+                <div class="button-drawer">
+                    <div class="clear button" title="Clear file" (click)="files=[]"></div>
+                    <div class="submit button" title="Submit File" [ngClass]="{'disabled':!contentReady}" (click)="generateNotes()"></div>
+                </div>
             </div>
         </div>
     </div>

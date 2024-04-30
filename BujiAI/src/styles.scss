@@ -4,7 +4,7 @@
     font-family: "Roboto", sans-serif;
 
     .drop-zone {
-        height: 60vh;
+        height: 55vh;
         border-radius: 5px;
         display: flex;
         align-items: center;
@@ -69,4 +69,9 @@
     100% {
         transform: rotate(360deg);
     }
+}
+
+.disabled {
+    pointer-events: none;
+    opacity: 0.5;
 }

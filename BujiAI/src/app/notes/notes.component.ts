@@ -24,6 +24,7 @@ export class NotesComponent {
   notesOutput: any = "";
   notesInput: any = {};
   contentReady: boolean = true;
+  fileEntry: any = {};
 
   convertBlobToBase64 = (blob: any) => new Promise((resolve, reject) => {
     const reader = new FileReader;
@@ -41,26 +42,11 @@ export class NotesComponent {
     for (const droppedFile of files) {
       // Is it a file?
       if (droppedFile.fileEntry.isFile) {
-        const fileEntry = droppedFile.fileEntry as FileSystemFileEntry;
-        fileEntry.file((file: File) => {
-          // Here you can access the real file
-          console.log(droppedFile.relativePath, file, fileEntry);
-          this.convertBlobToBase64(file).then((data: any) => {
-            console.log(data);
-            let notesParams = {data: data.split(',')[1], mimeType: file.type}
-            data = data.split(',')[1];
-            this.contentReady = false;
-            this.promptService.getNotes(notesParams).subscribe(resp => {
-              console.log(resp);
-              this.notesOutput = resp.response;
-              this.contentReady = true;
-            });
-          });
-        });
+        this.fileEntry = droppedFile.fileEntry as FileSystemFileEntry;
       } else {
         // It was a directory (empty directories are added, otherwise only files)
-        const fileEntry = droppedFile.fileEntry as FileSystemDirectoryEntry;
-        console.log(droppedFile.relativePath, fileEntry);
+        this.fileEntry = droppedFile.fileEntry as FileSystemDirectoryEntry;
+        console.log(droppedFile.relativePath, this.fileEntry);
       }
     }
   }
@@ -71,6 +57,23 @@ export class NotesComponent {
 
   public fileLeave(event: any) {
     console.log(event);
+  }
+
+  generateNotes() {
+    this.fileEntry.file((file: File) => {
+      // Here you can access the real file
+      this.convertBlobToBase64(file).then((data: any) => {
+        console.log(data);
+        let notesParams = {data: data.split(',')[1], mimeType: file.type}
+        data = data.split(',')[1];
+        this.contentReady = false;
+        this.promptService.getNotes(notesParams).subscribe(resp => {
+          console.log(resp);
+          this.notesOutput = resp.response;
+          this.contentReady = true;
+        });
+      });
+    });
   }
 
   public downloadAsPdf(): void {
