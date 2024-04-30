@@ -2,7 +2,7 @@
 <div class="page-body">
     <div class="input-wrapper">
         <div class="drop-wrapper">
-            <ngx-file-drop dropZoneLabel="Drop files here" dropZoneClassName="drop-zone" contentClassName="drop-content"
+            <ngx-file-drop dropZoneLabel="Drop files here" accept=".jpeg, .png, .pdf, .doc, .aac, .mp3, .mp4" dropZoneClassName="drop-zone" contentClassName="drop-content"
                 (onFileDrop)="dropped($event)" (onFileOver)="fileOver($event)" (onFileLeave)="fileLeave($event)">
                 <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">
                     <div>
@@ -11,7 +11,7 @@
                     </div>
                 </ng-template>
             </ngx-file-drop>
-
+            <div class="typelist" [ngClass]="{'warn':showWarning}">Allowed file types: .jpeg, .png, .pdf, .doc, .aac, .mp3, .mp4</div>
             <div class="file-wrapper" *ngFor="let item of files; let i=index">
                 <div class="file">{{ item.relativePath }}</div>
                 <div class="button-drawer">

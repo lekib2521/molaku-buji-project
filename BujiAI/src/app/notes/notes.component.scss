@@ -84,8 +84,18 @@
     }
 }
 
+.typelist {
+    color: #49454F;
+    display: flex;
+    justify-content: center;
+
+    &.warn {
+        color: red;
+    }
+}
+
 .file-wrapper {
-    height: 12.5vh;
+    height: 8vh;
     margin: 20px;
     padding: 10px;
     border-radius: 5px;

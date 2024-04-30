@@ -25,6 +25,7 @@ export class NotesComponent {
   notesInput: any = {};
   contentReady: boolean = true;
   fileEntry: any = {};
+  showWarning: boolean = false;
 
   convertBlobToBase64 = (blob: any) => new Promise((resolve, reject) => {
     const reader = new FileReader;
@@ -43,10 +44,16 @@ export class NotesComponent {
       // Is it a file?
       if (droppedFile.fileEntry.isFile) {
         this.fileEntry = droppedFile.fileEntry as FileSystemFileEntry;
+        this.fileEntry.file((f:any) => {
+          if(!['jpeg', 'png', 'svg', 'pdf', 'doc', 'aac', 'mp3', 'mp4'].includes(f.name.split('.')[1])){
+            this.fileEntry = [];
+            this.files = [];
+            this.showWarning = true;
+          }
+        })
       } else {
         // It was a directory (empty directories are added, otherwise only files)
         this.fileEntry = droppedFile.fileEntry as FileSystemDirectoryEntry;
-        console.log(droppedFile.relativePath, this.fileEntry);
       }
     }
   }
