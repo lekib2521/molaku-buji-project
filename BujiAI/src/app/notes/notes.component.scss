@@ -1,6 +1,5 @@
 .download {
     background: url(../../assets/icons/file_download.svg) no-repeat;
-    background-color: #E8DEF8;
 }
 
 .button {
@@ -13,6 +12,14 @@
     align-items: center;
     background-size: cover !important;
     margin: 10px;
+    background-color: #E6E0E9 !important;
+    box-shadow: 0 2px 5px 1px rgba(64, 60, 67, 0.16) !important;
+    transition: transform 0.2s;
+
+    &:hover {
+        transform: scale(1.1);
+        background-color: #CFD8DC !important;
+    }
 }
 
 .page-body {
@@ -36,12 +43,13 @@
 
 .output-container{
     background-color: white;
-    min-height: 60vh;
+    height: 60vh;
     padding: 25px;
     width: 40vw;
     display: flex;
     flex-direction: column;
     align-items: center;
+    overflow-y: auto;
 }
 
 .export-wrapper {
