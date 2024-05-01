@@ -48,7 +48,6 @@ async function generateContent(request, res) {
   for await (const item of streamingResp.stream) {
     response += (item.candidates[0]?.content?.parts[0]?.text);
   }
-  console.log(response.substr(response.indexOf("{"), response.lastIndexOf("}") - response.indexOf("{") + 1));
   response = JSON.parse(response.substr(response.indexOf("{"), response.lastIndexOf("}") - response.indexOf("{") + 1));
   res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
   res.send({ response });
@@ -56,7 +55,6 @@ async function generateContent(request, res) {
 
 // get function to generate quiz
 app.get('/quiz', (req, res) => {
-  console.log(req.query);
   const request = {
     contents: [{
         role: 'user', 
@@ -72,7 +70,6 @@ app.get('/quiz', (req, res) => {
 
 // get function to generate essay
 app.get('/essay', (req, res) => {
-  console.log(req.query);
   const request = {
     contents: [{
         role: 'user', 
@@ -93,7 +90,6 @@ async function generateNotes(request, res) {
   for await (const item of streamingResp.stream) {
     response += (item.candidates[0]?.content?.parts[0]?.text);
   }
-  console.log(response);
   response = {notes:response};
   res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
   res.send({ response });
@@ -101,7 +97,6 @@ async function generateNotes(request, res) {
 
 // get function to generate notes
 app.put('/notes', (req, res) => {
-  console.log(req);
   // creating image object
   const image1 = {
     inlineData: {
