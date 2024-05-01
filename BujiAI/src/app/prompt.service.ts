@@ -24,7 +24,7 @@ export class PromptService {
       .set('text',topic.text) 
       .set('difficulty', topic.difficulty)
     };
-    return this.http.get<any>(`http://localhost:3000/quiz`,options);
+    return this.http.get<any>(`https://buji-backend-kzhjzxd4pa-uc.a.run.app/quiz`,options);
   }
 
   getEssay(topic:any) {
@@ -37,7 +37,7 @@ export class PromptService {
       .set('tone', topic.tone)
       .set('sample', topic.sample)
     };
-    return this.http.get<any>(`http://localhost:3000/essay`,options);
+    return this.http.get<any>(`https://buji-backend-kzhjzxd4pa-uc.a.run.app/essay`,options);
   }
 
   getNotes(topic:any) {
@@ -47,6 +47,6 @@ export class PromptService {
       })
     };
     
-    return this.http.put<any>(`http://localhost:3000/notes`,{topic},httpOptions);
+    return this.http.put<any>(`https://buji-backend-kzhjzxd4pa-uc.a.run.app/notes`,{topic},httpOptions);
   }
 }
