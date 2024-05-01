@@ -49,7 +49,7 @@ async function generateContent(request, res) {
     response += (item.candidates[0]?.content?.parts[0]?.text);
   }
   response = JSON.parse(response.substr(response.indexOf("{"), response.lastIndexOf("}") - response.indexOf("{") + 1));
-  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
+  res.setHeader('Access-Control-Allow-Origin', 'https://lekib2521.github.io/molaku-buji-project');
   res.send({ response });
 }
 
@@ -91,7 +91,7 @@ async function generateNotes(request, res) {
     response += (item.candidates[0]?.content?.parts[0]?.text);
   }
   response = {notes:response};
-  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
+  res.setHeader('Access-Control-Allow-Origin', 'https://lekib2521.github.io/molaku-buji-project');
   res.send({ response });
 }
 
