@@ -20,7 +20,7 @@
             </div>
             <div class="button-drawer">
                 <div class='clear button' title="Clear Input" (click)="topic.text='';topic.qno=''"></div>
-                <div class='submit button' [ngClass]="{'disabled':!contentReady}" title="Generate Quiz" (click)="generateQuiz()"></div>
+                <div class='submit button' [ngClass]="{'disabled':!contentReady||topic.text.trim()==''||topic.qno<=0}" title="Generate Quiz" (click)="generateQuiz()"></div>
             </div>
         </div>
     </div>

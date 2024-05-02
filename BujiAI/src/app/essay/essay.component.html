@@ -10,14 +10,14 @@
         <div class="label">Who will read this essay?</div>
         <input class="reader" [(ngModel)]="essayParams.reader" placeholder="Who will read this essay?"/>
         <div class="label">Word Limit</div>
-        <input class="word-count" [(ngModel)]="essayParams.wordcount" placeholder="Word Count"/>
+        <input class="word-count" [(ngModel)]="essayParams.wordcount" placeholder="Word Count" type="number"/>
         <div class="label">Tone</div>
         <input class="tone" [(ngModel)]="essayParams.tone" placeholder="Tone"/>
         <div class="label">Sample of your writing</div>
         <input class="sample" [(ngModel)]="essayParams.sample" placeholder="Sample of writing style"/>
         <div class="button-container">
             <div class='clear button' title="Clear Input" (click)="clearInput()"></div>
-            <div class='submit button' [ngClass]="{'disabled':!contentReady}" title="Generate Essay" (click)="generateEssay()"></div>
+            <div class='submit button' [ngClass]="{'disabled':!contentReady||essayParams.topic.trim()==''||essayParams.wordcount<=0}" title="Generate Essay" (click)="generateEssay()"></div>
         </div>
     </div>
     <div class="essay-output-wrapper">
