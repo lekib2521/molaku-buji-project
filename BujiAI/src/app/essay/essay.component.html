@@ -17,7 +17,7 @@
         <input class="sample" [(ngModel)]="essayParams.sample" placeholder="Sample of writing style"/>
         <div class="button-container">
             <div class='clear button' title="Clear Input" (click)="clearInput()"></div>
-            <div class='submit button' [ngClass]="{'disabled':!contentReady||essayParams.topic.trim()==''||essayParams.author.trim()!=''||essayParams.wordcount<=0}" title="Generate Essay" (click)="generateEssay()"></div>
+            <div class='submit button' [ngClass]="{'disabled':!contentReady||essayParams.topic.trim()==''||essayParams.author.trim()==''||essayParams.wordcount<=0}" title="Generate Essay" (click)="generateEssay()"></div>
         </div>
     </div>
     <div class="essay-output-wrapper">
