@@ -29,4 +29,5 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ## Asset Attribution
 
 The bee icon of BujiAI is attributed to [FreePik](http://www.freepik.com/)
+
 The other icons are attributed to [Material UI](https://materialui.co/icons) by 7Span
