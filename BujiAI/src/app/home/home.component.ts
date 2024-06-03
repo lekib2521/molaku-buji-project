@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { HeaderComponent } from '../header/header.component';
 import { PromptService } from '../prompt.service';
@@ -8,7 +8,10 @@ import { PromptService } from '../prompt.service';
   standalone: true,
   imports: [RouterLink, HeaderComponent],
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss', '../../styles.scss']
+  styleUrls: ['./home.component.scss', '../../styles.scss'],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA
+  ]
 })
 export class HomeComponent {
   constructor(private promptService: PromptService) { }
