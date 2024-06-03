@@ -25,3 +25,9 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## Asset Attribution
+
+The bee icon of BujiAI is attributed to [FreePik](http://www.freepik.com/)
+
+The other icons are attributed to [Material UI](https://materialui.co/icons) by 7Span
